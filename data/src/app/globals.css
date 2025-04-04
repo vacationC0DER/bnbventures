@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 26 115 187;
+    /* #1A73BB */
+    --primary-light: 59 136 196;
+    /* #3B88C4 */
+    --primary-lighter: 186 213 234;
+    /* #BAD5EA */
+    --gray: 102 102 102;
+    /* #666666 */
+    --gray-light: 204 204 204;
+    /* #CCCCCC */
+  }
+
+  /* Default color overrides */
+  body {
+    @apply bg-white text-custom-gray-dark dark:bg-black dark:text-custom-gray-light;
+  }
+
+  a {
+    @apply text-primary hover:text-primary-dark dark:text-primary-light dark:hover:text-primary-lighter;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-primary dark:text-primary-light;
+  }
+}
+
+@font-face {
+  font-family: "NanumPenScript";
+  font-weight: 400;
+  font-display: block;
+  font-style: normal;
+  font-named-instance: "Regular";
+  src: url("/fonts/NanumPenScript.woff2") format("woff2");
+}
+
+.backdrop-blur {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.backdrop-blur-nav {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+code {
+  counter-reset: step;
+  counter-increment: step 0;
+}
+
+code .line::before {
+  content: counter(step);
+  counter-increment: step;
+  @apply mr-8 inline-block w-4 text-right text-custom-gray;
+}
+
+.mask {
+  mask-image: radial-gradient(rgba(0, 0, 0, 1) 0%, transparent 80%);
+}
+
+a {
+  @apply scroll-my-24 decoration-primary-lighter transition-all;
+}
+
+.anchor-link {
+  @apply invisible absolute -ml-4 w-3/4 max-w-2xl cursor-pointer pr-2 no-underline;
+}
+
+.anchor-link:hover {
+  @apply visible;
+}
+
+.anchor-link:after {
+  @apply text-primary-lighter dark:text-primary-light;
+  content: "#";
+}
+
+*:hover>.anchor-link {
+  @apply visible;
+}
